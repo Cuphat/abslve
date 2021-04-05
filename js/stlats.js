@@ -153,6 +153,15 @@ const defaultColors = {
   Infinity: colors.wow,
 };
 
+const combinedStarColors = {
+  0.5: colors.bad,
+  1.4: colors.poor,
+  1.8: colors.ok,
+  3.0: colors.good,
+  4.0: colors.great,
+  Infinity: colors.wow,
+};
+
 const reverseColors = {
   0.1: colors.wow,
   0.2: colors.great,
@@ -172,7 +181,7 @@ const anomalyColors = {
 };
 
 const stlatColors = {
-  stars: defaultColors,
+  stars: combinedStarColors,
   battingStars: defaultColors,
   pitchingStars: defaultColors,
   baserunningStars: defaultColors,
@@ -309,9 +318,11 @@ async function fetchPlayers(ids, isBatter, team) {
         team: team,
       };
 
-      newPlayer.stars = isBatter
-        ? newPlayer.battingStars
-        : newPlayer.pitchingStars;
+      newPlayer.stars =
+          newPlayer.battingStars +
+          newPlayer.pitchingStars +
+          newPlayer.baserunningStars +
+          newPlayer.defenseStars;
 
       var battingBaseStat = getBattingBaseStat(newPlayer.battingStars);
       newPlayer.battingSum =
