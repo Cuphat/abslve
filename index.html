@@ -29,7 +29,7 @@
       <div class="row">
         <div class="column column-20" id="sidebar">
           <nav id="team-selector" class="">
-            <template x-for="team in [null, ...teams, hof]" :key="team">
+            <template x-for="team in [null, ...teams.filter(isNotSpecialTeam), hof]" :key="team">
               <button
                 class="button team-button"
                 x-text="teamButtonLabel(team)"
