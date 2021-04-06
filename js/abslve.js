@@ -135,7 +135,7 @@ const gameData = () => {
           if (window.location.hash in this.teamsByShorthand) {
             this.activeTeam = this.teamsByShorthand[window.location.hash];
           } else {
-            this.activeTeam = this.teamsByShorthand["#SUN"];
+            this.activeTeam = this.teamsByShorthand["#SEA"];
             window.location.hash = `#${this.activeTeam.shorthand}`;
           }
         });
