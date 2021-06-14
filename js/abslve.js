@@ -122,8 +122,8 @@ const gameData = () => {
           for (const team of teams) {
             this.teamsByShorthand[`#${team.shorthand}`] = team;
             Promise.all([
-              fetchPlayers([...team.lineup, ...team.bench], true, team),
-              fetchPlayers([...team.rotation, ...team.bullpen], false, team),
+              fetchPlayers([...team.lineup], true, team),
+              fetchPlayers([...team.rotation, ...team.shadows], false, team),
             ]).then((values) => {
               var newPlayers = {};
               for (var player_set of values) {
@@ -379,7 +379,7 @@ const gameData = () => {
       } else {
         var cats = ["lineup", "rotation"];
         if (this.forbiddenKnowledge == "wild") {
-          return [...cats, "bench", "bullpen"];
+          return [...cats, "shadows"];
         }
         return cats;
       }
