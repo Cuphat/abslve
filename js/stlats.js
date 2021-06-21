@@ -39,7 +39,7 @@ const stat_categories = {
     "totalFingers",
     "pitchingSum",
   ],
-  extra: ["cinnamon", "fate", "peanutAllergy", "pressurization", "soul"],
+  extra: ["cinnamon", "fate", "peanutAllergy", "pressurization", "soul", "eDensity"],
 };
 
 const abbrevs = {
@@ -61,6 +61,7 @@ const abbrevs = {
   continuation: "cont",
   deceased: "dead",
   divinity: "divin",
+  eDensity: "density",
   fate: "Fate",
   groundFriction: "fric",
   indulgence: "indlg",
