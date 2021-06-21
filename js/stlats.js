@@ -45,7 +45,7 @@ const stat_categories = {
 const abbrevs = {
   name: "Name",
   team: "Team",
-  stars: "⭐",
+  stars: "🌟",
   battingStars: "⭐",
   pitchingStars: "⭐",
   defenseStars: "⭐",
