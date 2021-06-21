@@ -1,3 +1,33 @@
+specialTeams = [
+  "7fcb63bc-11f2-40b9-b465-f1d458692a63", // Real Game Band
+  "e3f90fa1-0bbe-40df-88ce-578d0723a23b", // FWXBC
+  "a3ea6358-ce03-4f23-85f9-deb38cb81b20", // Club de Calf
+  "f29d6e60-8fce-4ac6-8bc2-b5e3cabc5696", // BC Noir
+  "49181b72-7f1c-4f1c-929f-928d763ad7fb", // Atlético Latte
+  "4d921519-410b-41e2-882e-9726a4e54a6a", // Cold Brew Crew
+  "9a5ab308-41f2-4889-a3c3-733b9aab806e", // Royal PoS
+  "b3b9636a-f88a-47dc-a91d-86ecc79f9934", // Cream & Sugar United
+  "3b0a289b-aebd-493c-bc11-96793e7216d5", // Pandemonium Artists
+  "d2634113-b650-47b9-ad95-673f8e28e687", // Society Data Witches
+  "d8f82163-2e74-496b-8e4b-2ab35b2d3ff1", // Inter Xpresso
+  "a7592bd7-1d3c-4ffb-8b3a-0b1e4bc321fd", // Milk Proxy Society
+  "9e42c12a-7561-42a2-b2d0-7cf81a817a5e", // Macchiato City
+  "70eab4ab-6cb1-41e7-ac8b-1050ee12eecc", // Light & Sweet Electric Co.
+  "4e5d0063-73b4-440a-b2d1-214a7345cf16", // Americano Water Works
+  "e8f7ffee-ec53-4fe0-8e87-ea8ff1d0b4a9", // Heavy FC
+  "c6c01051-cdd4-47d6-8a98-bb5b754f937f", // The Hall Stars
+  "88151292-6c12-4fb8-b2d6-3e64821293b3", // Alaskan Immortals
+];
+
+function isSpecialTeam(team, invert) {
+  isSpecial = specialTeams.includes(team.id);
+  return invert ? !isSpecial : isSpecial;
+}
+
+function isNotSpecialTeam(team) {
+  return isSpecialTeam(team, true);
+}
+
 const categoryColors = {
   general: "bad",
   batting: "poor",
@@ -119,7 +149,7 @@ const gameData = () => {
           this.teams.push(
             ...teams.sort((a, b) => (a.fullName > b.fullName ? 1 : -1))
           );
-          for (const team of teams) {
+          for (const team of teams.filter(isNotSpecialTeam)) {
             this.teamsByShorthand[`#${team.shorthand}`] = team;
             Promise.all([
               fetchPlayers([...team.lineup], true, team),
